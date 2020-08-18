@@ -4,6 +4,7 @@ import { Card } from 'react-native-elements';
 import { DISHES } from '../shared/dishes';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
+import Contact from './ContactComponent';
 
 function RenderItem(props) {
     
