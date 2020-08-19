@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, FlatList } from 'react-native';
-import { Card } from 'react-native-elements';
-import { DISHES } from '../shared/dishes';
-import { COMMENTS } from '../shared/comments';
+import { Card, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 import { postFavorite } from '../redux/ActionCreators';
@@ -39,7 +37,7 @@ function RenderComments(props) {
         <FlatList 
             data={comments}
             renderItem={renderCommentItem}
-            keyExtractor={{uri: baseUrl + dish.image}}
+            keyExtractor={item => item.id.toString()}
             />
         </Card>
     );
@@ -53,12 +51,13 @@ function RenderDish(props) {
     
         if (dish != null) {
             return(
-                <Card
-            featuredTitle={dish.name}
-            image={require('./images/uthappizza.png')}>
-                <Text style={{margin: 10}}>
-                    {dish.description}
-                </Text>
+              <Card
+              featuredTitle={dish.name}
+              image={{uri: baseUrl + dish.image}}
+              >
+                  <Text style={{margin: 10}}>
+                      {dish.description}
+                  </Text>
                 <Icon
                     raised
                     reverse
@@ -75,36 +74,47 @@ function RenderDish(props) {
         }
 }
 
-class Dishdetail extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            dishes: DISHES,
-            comments: COMMENTS,
-            favorites: []
-        };
+class DishDetail extends Component {
+    constructor(props){
+      super(props);
+      this.state = {showModal: false}
+    }
+  
+    openCommentForm = () => {
+      this.setState({showModal: true})
+    }
+  
+   
+    markFavorite = (dishId) => {
+      this.props.postFavorite(dishId);
     }
 
     static navigationOptions = {
-        title: 'DishDetail'
-    };
-
-    markFavorite(dishId) {
-        this.props.postFavorite(dishId);
+      title: 'Dish details',
     }
-    
-    render() {
-        const dishId = this.props.route.params.dishId;
-        return(
-            <ScrollView>
-                <RenderDish dish={this.props.dishes.dishes[+dishId]}
-                    favorite={this.props.favorites.some(el => el === dishId)}
-                    onPress={() => this.markFavorite(dishId)} 
-                    />
-                <RenderComments comments={this.props.comments.comments.filter((comment) => comment.dishId === dishId)} />
-            </ScrollView>
-        );
+  
+    toggleModal = () => {
+      this.setState({showModal: !this.state.showModal})
     }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(DishDetail);
+  
+    render(){
+      const dishId = this.props.route.params.dishId;
+        
+      return(
+        <ScrollView>
+          <RenderDish 
+            dish={this.props.dishes.dishes[+dishId]}
+            favorite={this.props.favorites.some(el => el === dishId)}
+            onPress={() => this.markFavorite(dishId)}
+            openCommentForm={() => this.openCommentForm()}
+          />
+          <RenderComments 
+            comments={this.props.comments.comments.filter((comment) => comment.dishId === dishId)}
+          />
+          
+        </ScrollView>
+      )
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(DishDetail);
