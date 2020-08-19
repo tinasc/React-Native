@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, Platform, Text, ScrollView, Image, StyleSheet } from 'react-native';
+import { View, Platform, Text, ScrollView, Image, StyleSheet, DrawerItems, SafeAreaView } from 'react-native';
 import { NavigationContainer, } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator, DrawerItems, SafeAreaView } from '@react-navigation/drawer';
+import { createDrawerNavigator,  } from '@react-navigation/drawer';
 import { Icon } from 'react-native-elements';
 import Menu from './MenuComponent';
 import Home from './HomeComponent';
