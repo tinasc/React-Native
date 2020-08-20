@@ -152,7 +152,7 @@ function ContactNavigatorScreen(){
             screenOptions={HeaderOptions}
         >
             <ContactNavigator.Screen
-                namehj="Contact Us"
+                name="Contact Us"
                 component={Contact}
                 options={
                     ({navigation}) => ({
