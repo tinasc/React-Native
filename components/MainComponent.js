@@ -10,6 +10,7 @@ import Dishdetail from './DishdetailComponent';
 
 import Contact from './ContactComponent';
 import About from './AboutComponent';
+import Favorites from './FavoriteComponent';
 import Reservation from './ReservationComponent';
 import { connect } from 'react-redux';
 import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators';
@@ -151,7 +152,7 @@ function ContactNavigatorScreen(){
             screenOptions={HeaderOptions}
         >
             <ContactNavigator.Screen
-                name="Contact Us"
+                namehj="Contact Us"
                 component={Contact}
                 options={
                     ({navigation}) => ({
@@ -172,6 +173,36 @@ function ContactNavigatorScreen(){
     );
 }
 
+const FavoriteNavigator = createStackNavigator();
+
+function FavoriteNavigatorScreen(){
+    return(
+        <FavoriteNavigator.Navigator
+            initialRouteName='My Favorites'
+            screenOptions={HeaderOptions}
+        >
+            <FavoriteNavigator.Screen
+                name="My Favorites"
+                component={Favorites}
+                options={
+                    ({navigation}) => ({
+                        headerLeft: () => (
+                            <Icon 
+                                name='menu' 
+                                size={24}
+                                color='white'
+                                onPress={() => 
+                                    navigation.toggleDrawer()}
+                            />
+                        )
+                    
+                    })
+                 }
+            />
+        </FavoriteNavigator.Navigator>
+    );
+}
+
 const ReservationNavigator = createStackNavigator();
 
 function ReservationNavigatorScreen(){
@@ -180,7 +211,7 @@ function ReservationNavigatorScreen(){
             initialRouteName='Reservation'
             screenOptions={HeaderOptions}
         >
-            <ContactNavigator.Screen
+            <ReservationNavigator.Screen
                 name="Reservation"
                 component={Reservation}
                 options={
@@ -269,6 +300,20 @@ function MainNavigatorDrawer() {
                     drawerIcon: ({tintColor}) => (
                         <Icon
                             name='list'
+                            type='font-awesome'
+                            size={24}
+                            color={tintColor}
+                        />
+                    )
+                }}                
+            />
+            <MainNavigator.Screen 
+                name="My Favorite"   
+                component={FavoriteNavigatorScreen} 
+                options={{
+                    drawerIcon: ({tintColor}) => (
+                        <Icon
+                            name='heart'
                             type='font-awesome'
                             size={24}
                             color={tintColor}
