@@ -20,6 +20,8 @@ const mapStateToProps = state => {
     deleteFavorite: (dishId) => dispatch(deleteFavorite(dishId))
 })
 
+
+
 class Favorites extends Component {
 
     static navigationOptions = {
