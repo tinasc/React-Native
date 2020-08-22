@@ -47,15 +47,13 @@ const HeaderOptions = {
     }
 };
 
-const LoginNavigator = createStackNavigator();
-
 function LoginNavigatorScreen() {
     return(
         <LoginNavigator.Navigator
             initialRouteName='Login'
             screenOptions={HeaderOptions}
         >
-            <LoginNavigator.Screen
+            <HomeNavigator.Screen
                 name="Login"
                 component={Login}
                 options={
@@ -73,11 +71,9 @@ function LoginNavigatorScreen() {
                     })
                  }
             />
-                  
         </LoginNavigator.Navigator>
     );
-  }
-
+}
 
 
 function MenuNavigatorScreen() {
@@ -313,8 +309,8 @@ function MainNavigatorDrawer() {
                 }}
 
             />
-            <MainNavigator.Screen 
-                name="Login"   
+             <MainNavigator.Screen 
+                name="Login"       
                 component={LoginNavigatorScreen} 
                 options={{
                     drawerIcon: ({tintColor}) => (
@@ -325,7 +321,7 @@ function MainNavigatorDrawer() {
                             color={tintColor}
                         />
                     )
-                }}                
+                }}
             />
             <MainNavigator.Screen 
                 name="About Us"   

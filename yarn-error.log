@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Giselle\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo-mail-composer@~8.2.1
+  C:\Program Files\nodejs\node.exe C:\Users\Giselle\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo-image-picker@~8.3.0
 
 PATH: 
   C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Brackets\command;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\PostgreSQL\10\bin;C:\Users\Giselle\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\Giselle\AppData\Local\Programs\Python\Python38-32\;C:\Users\Giselle\AppData\Local\Microsoft\WindowsApps;C:\Users\Giselle\AppData\Roaming\npm;C:\Users\Giselle\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\MongoDB\Server\4.4\bin;
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\Giselle\Documents\Tina\React\ReactNative\confusion\node_modules\@expo\configure-splash-screen\node_modules\xcode\node_modules\.bin'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Giselle\Documents\Tina\React\ReactNative\confusion\node_modules\@babel\compat-data\node_modules\.bin'
 
 npm manifest: 
   {
@@ -32,6 +32,7 @@ npm manifest:
       "@react-navigation/native": "^5.7.3",
       "@react-navigation/stack": "^5.9.0",
       "expo": "~38.0.8",
+      "expo-mail-composer": "~8.2.1",
       "expo-secure-store": "~9.0.1",
       "expo-status-bar": "^1.0.2",
       "react": "~16.11.0",
@@ -57,7 +58,13 @@ npm manifest:
       "@babel/core": "^7.8.6",
       "babel-preset-expo": "~8.1.0"
     },
-    "private": true
+    "private": true,
+    "name": "confusion",
+    "version": "1.0.0",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": ""
   }
 
 yarn manifest: 
@@ -2606,6 +2613,13 @@ Lockfile:
     dependencies:
       invariant "^2.2.4"
   
+  expo-mail-composer@~8.2.1:
+    version "8.2.1"
+    resolved "https://registry.yarnpkg.com/expo-mail-composer/-/expo-mail-composer-8.2.1.tgz#26168b747606a9531801f1322b1690aa22bfe7db"
+    integrity sha512-srZ+yyevorpMONqXoUYAc5alLPix8xCZXhnatyXHPS1a11OOSsjtURjeK0CL4okmIkCSyw2Ug3W6GXfxVgv7Qw==
+    dependencies:
+      query-string "^6.2.0"
+  
   expo-permissions@~9.0.1:
     version "9.0.1"
     resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-9.0.1.tgz#dc10b58654bbe39bbbed5827369942b01b08055e"
@@ -4580,7 +4594,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.4.tgz#9090b290d1f91728d3c22e54843ca44aea5ab687"
     integrity sha512-A1kFqHekCTM7cz0udomYUoYNWjBebHm/5wzU/XqrBRBNWectVH0QIiN+NEcZ0Dte5hvzHwbr8+XQmguPhJ6WdQ==
   
-  query-string@^6.13.1:
+  query-string@^6.13.1, query-string@^6.2.0:
     version "6.13.1"
     resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.13.1.tgz#d913ccfce3b4b3a713989fe6d39466d92e71ccad"
     integrity sha512-RfoButmcK+yCta1+FuU8REvisx1oEzhMKwhLUNcepQTPGcNMp1sIqjnfCtfnvGSQZQEhaBHvccujtWoUV3TTbA==
