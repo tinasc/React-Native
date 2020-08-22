@@ -7,7 +7,7 @@ import { Icon } from 'react-native-elements';
 import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import Dishdetail from './DishdetailComponent';
-
+import Login from './LoginComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 import Favorites from './FavoriteComponent';
@@ -46,6 +46,40 @@ const HeaderOptions = {
         color: "#fff"            
     }
 };
+
+const LoginNavigator = createStackNavigator();
+
+function LoginNavigatorScreen() {
+    return(
+        <LoginNavigator.Navigator
+            initialRouteName='Login'
+            screenOptions={HeaderOptions}
+        >
+            <LoginNavigator.Screen
+                name="Login"
+                component={Login}
+                options={
+                    ({navigation}) => ({
+                        headerLeft: () => (
+                            <Icon 
+                                name='menu' 
+                                size={24}
+                                color='white'
+                                onPress={() => 
+                                    navigation.toggleDrawer()}
+                            />
+                        )
+                    
+                    })
+                 }
+            />
+                  
+        </LoginNavigator.Navigator>
+    );
+  }
+
+
+
 function MenuNavigatorScreen() {
   return(
       <MenuNavigator.Navigator
@@ -278,6 +312,20 @@ function MainNavigatorDrawer() {
                     )
                 }}
 
+            />
+            <MainNavigator.Screen 
+                name="Login"   
+                component={LoginNavigatorScreen} 
+                options={{
+                    drawerIcon: ({tintColor}) => (
+                        <Icon
+                            name='sign-in'
+                            type='font-awesome'
+                            size={24}
+                            color={tintColor}
+                        />
+                    )
+                }}                
             />
             <MainNavigator.Screen 
                 name="About Us"   
