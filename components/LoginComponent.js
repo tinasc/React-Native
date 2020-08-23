@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import { Input, CheckBox, Button, Icon } from 'react-native-elements';
-//import * as SecureStore from 'expo-secure-store';
-//import * as Permissions from 'expo-permissions';
-import { SecureStore, Camera, Permissions, ImagePicker, Asset, ImageManipulator } from 'expo';
+import * as SecureStore from 'expo-secure-store';
+import * as Permissions from 'expo-permissions';
+import { ImagePicker, ImageManipulator } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/native';
 
@@ -153,6 +153,30 @@ class RegisterTab extends Component {
 
     }
 
+    getImageFromGallery = async () => {
+        const cameraRollPermission = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+  
+        if (cameraRollPermission.status === 'granted') {
+  
+        try {
+          let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+          });
+          if (!result.cancelled) {
+            this.processImage(result.uri);
+          }
+  
+          console.log(result);
+        } catch (E) {
+          console.log(E);
+        }
+      }
+  
+    }
+
     processImage=async(imageUri)=>{
         let processedImage=await ImageManipulator.manipulateAsync(
             imageUri,
@@ -175,6 +199,7 @@ class RegisterTab extends Component {
         )
     };
 
+
     handleRegister() {
         console.log(JSON.stringify(this.state));
         if (this.state.remember)
@@ -195,6 +220,10 @@ class RegisterTab extends Component {
                     <Button
                         title="Camera"
                         onPress={this.getImageFromCamera}
+                        />
+                    <Button
+                        title="Gallery"
+                        onPress={this.getImageFromGallery}
                         />
                 </View>
                 <Input

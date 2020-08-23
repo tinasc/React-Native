@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image, StyleSheet, NetInfo, ToastAndroid } from 'react-native';
+import { View, Text, ScrollView, Image, StyleSheet,NetInfo, ToastAndroid } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer';
@@ -401,7 +401,7 @@ class Main extends Component {
     this.props.fetchPromos();
     this.props.fetchLeaders();
 
-    NetInfo.getConnectionInfo()
+   /*NetInfo.getConnectionInfo()
         .then((connectionInfo) => {
             ToastAndroid.show('Initial Network Connectivity Type: '
                 + connectionInfo.type + ', effectiveType: ' + connectionInfo.effectiveType,
@@ -431,7 +431,7 @@ class Main extends Component {
         break;
       default:
         break;
-    }
+    }*/
   }
 
   render() {
